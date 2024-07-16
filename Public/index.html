@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timezone Selector</title>
+</head>
+<body>
+    <form action="/timezone" method="POST">
+        <label for="timezone">Choose a timezone:</label>
+        <select name="timezone" id="timezone">
+           <!--  <option value="America/New_York">America/New_York</option>
+            <option value="Europe/London">Europe/London</option>
+            <option value="Asia/Tokyo">Asia/Tokyo</option>
+            <option value="Australia/Sydney">Australia/Sydney</option> -->
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const timezones = Intl.supportedValuesOf('timeZone');
+            const timezoneSelect = document.getElementById('timezone');
+            timezones.forEach(timezone => {
+                const option = document.createElement('option');
+                option.value = timezone;
+                option.textContent = timezone;
+                timezoneSelect.appendChild(option);
+            });
+        });
+    </script>
+</body>
+</html>
